@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "theothernic/twtr",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "A Twitter archive application built on the Laravel framework.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {

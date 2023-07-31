@@ -6,6 +6,21 @@
 
     class TweetService
     {
+
+
+        public function getTotalTweets()
+        {
+            return Tweet::count();
+        }
+
+        public function getPaginatedTweets($page = 1) {
+            $skip = ((int) config('data.pagination.items')) * (int) $page;
+            $take = (int) config('data.pagination.items');
+
+
+            return Tweet::orderBy('created_at', 'DESC')->skip($skip)->take($take)->get();
+        }
+
         public function tweetWithIdExists(string $snowflake_id = '') : bool
         {
             return (Tweet::where('snowflake_id', $snowflake_id)->get()->count() > 0);
