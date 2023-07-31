@@ -15,7 +15,15 @@ First, you must request your data from the birdsite -- instructions _here_.
 ## Uploading your tweets?
 After you have recieved your data archive:
 
-1. Place your 'tweets.js' file in the [storage_dir]/tweetdata/imports.
+### Run the migrations
+At the command prompt, run `php artisan migrate --force`
+
+### Upload your tweet data
+
+1. From your archive's `data` folder, make a copy the `tweets.js` file and open the copy.
+2. Edit your copied file so that there is no variable or assignment operator on the first line/
+at the beginning of the file.
+1. Place your copied `tweets.js` file in the [storage_dir]/tweetdata/imports.
 2. Run the command `php artisan tweet:import`
 
 
