@@ -14,7 +14,7 @@
                 return null;
 
             return Cache::remember(sprintf('Tweet__%s', $id), 60, function () use ($id) {
-                Tweet::where('id', $id)->first();
+                return Tweet::where('id', $id)->first();
             });
         }
 
