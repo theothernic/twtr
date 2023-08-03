@@ -2,10 +2,26 @@
     namespace App\Services;
 
     use App\Models\Tweet;
+    use Illuminate\Database\Eloquent\Collection;
     use Illuminate\Support\Carbon;
+    use Illuminate\Support\Facades\Cache;
 
     class TweetService
     {
+        public function get(string $id = '') : Tweet|null
+        {
+            if (empty($id))
+                return null;
+
+            return Cache::remember(sprintf('Tweet__%s', $id), 60, function () use ($id) {
+                Tweet::where('id', $id)->first();
+            });
+        }
+
+        public function filter(array $filters = []) : Collection|null
+        {
+            return null;
+        }
 
 
         public function getTotalTweets()

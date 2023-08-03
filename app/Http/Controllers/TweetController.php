@@ -31,4 +31,23 @@
 
             return response()->json($jsonResponse);
         }
+
+        public function single(string $id)
+        {
+            $jsonResponse = new JsonResponseData();
+
+            if ($record = $this->tweetService->get($id))
+            {
+                $jsonResponse->total = 1;
+                $jsonResponse->success = true;
+                $jsonResponse->data = $record;
+                $jsonResponse->current = 1;
+                $jsonResponse->page = 1;
+            }
+
+            return response()->json($jsonResponse);
+        }
+        public function search(Request $request) {
+
+        }
     }

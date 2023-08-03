@@ -18,4 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('tweets', [\App\Http\Controllers\TweetController::class, 'getData']);
+Route::get('tweets', [\App\Http\Controllers\TweetController::class, 'getData'])->name('tweets.index');
+Route::get('tweets/search/{term}', [\App\Http\Controllers\TweetController::class, 'search'])->name('tweets.search');
+
+Route::get('tweet/{id}', [\App\Http\Controllers\TweetController::class, 'single'])->name('tweets.detail');
+
